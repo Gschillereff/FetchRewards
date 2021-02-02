@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.neongarage.fetchrewards.R
@@ -40,6 +41,10 @@ class MainFragment : Fragment() {
         binding.fetchRv.adapter = FetchAdapter(fetchList)
         binding.fetchRv.layoutManager = LinearLayoutManager(context)
         fetchAdapter = binding.fetchRv.adapter as FetchAdapter
+
+        binding.filter.setOnClickListener {
+            fetchAdapter?.filterNulls()
+        }
 
         call()
 
