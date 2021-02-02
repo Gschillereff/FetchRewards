@@ -34,7 +34,7 @@ class MainFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        var binding: MainFragmentBinding = DataBindingUtil.inflate(
+        val binding: MainFragmentBinding = DataBindingUtil.inflate(
             inflater, R.layout.main_fragment, container, false
         )
 
@@ -82,6 +82,6 @@ class MainFragment : Fragment() {
             val fetchObject = gson.fromJson(jsonObject.toString(), Fetch::class.java)
             fetchAdapter?.addItem(fetchObject)
         }
-        fetchAdapter?.filterNulls()
+        fetchAdapter?.filter()
     }
 }

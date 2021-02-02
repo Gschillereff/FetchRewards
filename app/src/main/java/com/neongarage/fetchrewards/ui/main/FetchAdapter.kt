@@ -20,7 +20,6 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
             val listIdText: TextView = itemView.findViewById(R.id.listId_TV)
             val nameText: TextView = itemView.findViewById(R.id.name_TV)
             val cardView: CardView = itemView.findViewById(R.id.fetch_card)
-
         }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
@@ -42,7 +41,7 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
         backUpList.add(fetch)
     }
 
-    fun filterNulls(){
+    fun filter(){
         val noNullList: List<Fetch> = fetchList.filter { it.name != null }
         val noEmptyNameList: List<Fetch> = noNullList.filter { it.name != "" }
         //Filter using id for name, since name is item'id'
