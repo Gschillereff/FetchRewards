@@ -28,23 +28,19 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-
         viewHolder.apply {
             idText.text = fetchList[position].id.toString()
             listIdText.text = fetchList[position].listId.toString()
             nameText.text = fetchList[position].name
-
         }
     }
 
     fun addItem(fetch: Fetch){
         fetchList.add(fetch)
         backUpList.add(fetch)
-        notifyItemInserted(fetchList.size -1)
     }
 
     fun filterNulls(){
-        Log.d("test", "In filer")
         val noNullList: List<Fetch> = fetchList.filter { it.name != null }
         val noEmptyNameList: List<Fetch> = noNullList.filter { it.name != "" }
         //Filter using id for name, since name is item'id'
@@ -52,8 +48,6 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
         fetchList.clear()
         fetchList.addAll(sortedList)
         notifyDataSetChanged()
-//        fetchList.clear()
-//        fetchList.addAll(backUpList)
     }
 
     override fun getItemCount() = fetchList.size

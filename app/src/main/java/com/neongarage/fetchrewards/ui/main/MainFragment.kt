@@ -42,9 +42,6 @@ class MainFragment : Fragment() {
         binding.fetchRv.layoutManager = LinearLayoutManager(context)
         fetchAdapter = binding.fetchRv.adapter as FetchAdapter
 
-        binding.filter.setOnClickListener {
-            fetchAdapter?.filterNulls()
-        }
 
         call()
 
@@ -85,5 +82,6 @@ class MainFragment : Fragment() {
             val fetchObject = gson.fromJson(jsonObject.toString(), Fetch::class.java)
             fetchAdapter?.addItem(fetchObject)
         }
+        fetchAdapter?.filterNulls()
     }
 }
