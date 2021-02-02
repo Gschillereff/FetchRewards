@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.neongarage.fetchrewards.R
 
@@ -18,6 +19,7 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
             val idText: TextView = itemView.findViewById(R.id.id_TV)
             val listIdText: TextView = itemView.findViewById(R.id.listId_TV)
             val nameText: TextView = itemView.findViewById(R.id.name_TV)
+            val cardView: CardView = itemView.findViewById(R.id.fetch_card)
 
         }
 
