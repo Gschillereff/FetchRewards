@@ -47,6 +47,7 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
         Log.d("test", "In filer")
         val noNullList: List<Fetch> = fetchList.filter { it.name != null }
         val noEmptyNameList: List<Fetch> = noNullList.filter { it.name != "" }
+        //Filter using id for name, since name is item'id'
         val sortedList: List<Fetch> = noEmptyNameList.sortedWith(compareBy ({ it.listId }, {it.id}))
         fetchList.clear()
         fetchList.addAll(sortedList)
