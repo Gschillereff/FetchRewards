@@ -1,11 +1,8 @@
 package com.neongarage.fetchrewards.ui.main
 
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +10,6 @@ import com.neongarage.fetchrewards.R
 
 class FetchAdapter (private val fetchList: MutableList<Fetch>):
     RecyclerView.Adapter<FetchAdapter.ViewHolder>(){
-    private val backUpList: MutableList<Fetch> = mutableListOf()
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view){
             val idText: TextView = itemView.findViewById(R.id.id_TV)
@@ -38,7 +34,6 @@ class FetchAdapter (private val fetchList: MutableList<Fetch>):
 
     fun addItem(fetch: Fetch){
         fetchList.add(fetch)
-        backUpList.add(fetch)
     }
 
     fun filter(){

@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.neongarage.fetchrewards.R
@@ -18,13 +17,11 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import com.neongarage.fetchrewards.databinding.MainFragmentBinding
 import org.json.JSONArray
-import org.json.JSONObject
 
 class MainFragment : Fragment() {
 
     val fetchList: MutableList<Fetch> = mutableListOf()
     var fetchAdapter: FetchAdapter? = null
-
 
     companion object {
         fun newInstance() = MainFragment()
@@ -32,8 +29,10 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         val binding: MainFragmentBinding = DataBindingUtil.inflate(
             inflater, R.layout.main_fragment, container, false
         )
@@ -42,12 +41,9 @@ class MainFragment : Fragment() {
         binding.fetchRv.layoutManager = LinearLayoutManager(context)
         fetchAdapter = binding.fetchRv.adapter as FetchAdapter
 
-
         call()
 
         return binding.root
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -55,7 +51,7 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
-    private fun call(){
+    private fun call() {
         Log.d("test", "inside call")
         val queue = Volley.newRequestQueue(context)
         val url =
@@ -63,8 +59,7 @@ class MainFragment : Fragment() {
 
         val stringRequest = StringRequest(Request.Method.GET, url,
             Response.Listener<String> { response ->
-                Log.d("test", "inside string request")
-               // val jsonArray = JSONObject(response.toString()).getJSONArray("")
+                // val jsonArray = JSONObject(response.toString()).getJSONArray("")
                 val jsonArray = JSONArray(response.toString())
                 response(jsonArray)
             },
@@ -73,9 +68,7 @@ class MainFragment : Fragment() {
     }
 
 
-    private fun response(response: JSONArray){
-        Log.d("test", "in response")
-        Log.d("test", response.toString())
+    private fun response(response: JSONArray) {
         for (i in 0 until response.length()) {
             val jsonObject = response.getJSONObject(i)
             val gson = Gson()
